@@ -9,23 +9,13 @@ namespace OdeToFood.Controllers
 {
     public class ReviewsController : Controller
     {
-        public ActionResult BestReview()
-        {
-            var bestReview = from br in _reviews
-                             orderby br.Rating descending
-                             select br;
-            return PartialView("_Review", bestReview.First());
-        }
-
+      
         //
         // GET: /Reviews/
 
         public ActionResult Index()
         {
-            var model = from r in _reviews
-                    orderby r.Rating
-                    select r;
-            return View(model);
+            return View();
         }
 
         //
@@ -67,8 +57,8 @@ namespace OdeToFood.Controllers
 
         public ActionResult Edit(int id)
         {
-            var review = _reviews.Single(r => r.Id == id);
-            return View(review);
+     
+            return View();
         }
 
         //
@@ -78,12 +68,8 @@ namespace OdeToFood.Controllers
         public ActionResult Edit(int id, FormCollection collection)
         {
             // TODO: Add update logic here
-            var review = _reviews.Single(r => r.Id == id);
-            if (TryUpdateModel(review))
-            {
-                return RedirectToAction("Index");
-            }
-            return View(review);
+           
+            return View();
         }
 
         //
@@ -113,29 +99,29 @@ namespace OdeToFood.Controllers
         }
 
 
-        static List<RestaurantReview> _reviews = new List<RestaurantReview>
-        {
-            new RestaurantReview {
-                Id = 1,
-                Name = "Cinnamon Club",
-                City = "London",
-                Country = "UK",
-                Rating = 10
-            },
-            new RestaurantReview {
-                Id = 2,
-                Name = "Marrakesh",
-                City = "D.C",
-                Country = "USA",
-                Rating = 10
-            },
-            new RestaurantReview {
-                Id = 3,
-                Name = "The House of Belliot",
-                City = "Ghent",
-                Country = "Belgium",
-                Rating = 10
-            }
-        };
+        //static List<RestaurantReview> _reviews = new List<RestaurantReview>
+        //{
+        //    new RestaurantReview {
+        //        Id = 1,
+        //        Name = "Cinnamon Club",
+        //        City = "London",
+        //        Country = "UK",
+        //        Rating = 10
+        //    },
+        //    new RestaurantReview {
+        //        Id = 2,
+        //        Name = "Marrakesh",
+        //        City = "D.C",
+        //        Country = "USA",
+        //        Rating = 10
+        //    },
+        //    new RestaurantReview {
+        //        Id = 3,
+        //        Name = "The House of Belliot",
+        //        City = "Ghent",
+        //        Country = "Belgium",
+        //        Rating = 10
+        //    }
+        //};
     }
 }
